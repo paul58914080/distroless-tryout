@@ -12,7 +12,7 @@ spring:
     show-sql: ${database.show_sql:false}
     properties:
       hibernate:
-        default_schema: ${database.default_schema:USER}
+        default_schema: ${database.default_schema:USERS}
         show_sql: ${database.show_sql:false}
         use_sql_comments: ${database.use_sql_comments:false}
         format_sql: ${database.format_sql:false}
@@ -24,4 +24,4 @@ spring:
   liquibase:
     enabled: true
     liquibase-schema: ${database.liquibase_schema:LIQUIBASE}
-    default-schema: ${database.default_schema:USER}
+    default-schema: ${database.default_schema:USERS}
