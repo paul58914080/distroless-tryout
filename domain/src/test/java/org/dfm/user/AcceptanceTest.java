@@ -5,16 +5,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import java.util.Optional;
+import org.dfm.user.domain.UserDomain;
+import org.dfm.user.domain.exception.UserNotFoundException;
+import org.dfm.user.domain.model.User;
+import org.dfm.user.domain.port.ObtainUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.dfm.user.domain.UserDomain;
-import org.dfm.user.domain.exception.UserNotFoundException;
-import org.dfm.user.domain.model.User;
-import org.dfm.user.domain.port.ObtainUser;
 
 @ExtendWith(MockitoExtension.class)
 public class AcceptanceTest {
@@ -66,9 +66,7 @@ public class AcceptanceTest {
     var description =
         "I want to sleep\\r\\nSwat the flies\\r\\nSoftly, please.\\r\\n\\r\\n-- Masaoka Shiki (1867-1902)";
     var expectedUser = User.builder().code(code).description(description).build();
-    Mockito.lenient()
-        .when(obtainUser.getUserByCode(code))
-        .thenReturn(Optional.of(expectedUser));
+    Mockito.lenient().when(obtainUser.getUserByCode(code)).thenReturn(Optional.of(expectedUser));
     // When
     var requestUser = new UserDomain(obtainUser);
     var actualUser = requestUser.getUserByCode(code);

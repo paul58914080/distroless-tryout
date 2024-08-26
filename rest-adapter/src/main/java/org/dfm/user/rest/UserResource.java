@@ -1,12 +1,12 @@
 package org.dfm.user.rest;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.dfm.user.domain.model.User;
 import org.dfm.user.domain.port.RequestUser;
 import org.dfm.user.rest.generated.api.UserApi;
 import org.dfm.user.rest.generated.model.UserInfo;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserResource implements UserApi {

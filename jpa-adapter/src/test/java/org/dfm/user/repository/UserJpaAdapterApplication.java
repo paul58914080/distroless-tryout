@@ -1,12 +1,12 @@
 package org.dfm.user.repository;
 
 import net.lbruun.springboot.preliquibase.PreLiquibaseAutoConfiguration;
+import org.dfm.user.repository.config.JpaAdapterConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Import;
-import org.dfm.user.repository.config.JpaAdapterConfig;
 
 @SpringBootApplication
 public class UserJpaAdapterApplication {

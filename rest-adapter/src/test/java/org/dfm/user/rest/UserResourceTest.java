@@ -7,6 +7,11 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import org.dfm.user.domain.exception.UserNotFoundException;
+import org.dfm.user.domain.model.User;
+import org.dfm.user.domain.port.RequestUser;
+import org.dfm.user.rest.generated.model.ProblemDetail;
+import org.dfm.user.rest.generated.model.UserInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,11 +24,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
-import org.dfm.user.domain.exception.UserNotFoundException;
-import org.dfm.user.domain.model.User;
-import org.dfm.user.domain.port.RequestUser;
-import org.dfm.user.rest.generated.model.UserInfo;
-import org.dfm.user.rest.generated.model.ProblemDetail;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = UserRestAdapterApplication.class, webEnvironment = RANDOM_PORT)

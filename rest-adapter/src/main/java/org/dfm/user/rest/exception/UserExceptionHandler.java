@@ -1,14 +1,14 @@
 package org.dfm.user.rest.exception;
 
 import java.time.LocalDateTime;
+import org.dfm.user.domain.exception.UserNotFoundException;
+import org.dfm.user.rest.generated.model.ProblemDetail;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
-import org.dfm.user.domain.exception.UserNotFoundException;
-import org.dfm.user.rest.generated.model.ProblemDetail;
 
 @RestControllerAdvice(basePackages = {"org.dfm.user"})
 public class UserExceptionHandler {

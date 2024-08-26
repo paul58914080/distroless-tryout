@@ -2,6 +2,8 @@ package org.dfm.user.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.dfm.user.domain.model.User;
+import org.dfm.user.domain.port.ObtainUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,8 +12,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.dfm.user.domain.model.User;
-import org.dfm.user.domain.port.ObtainUser;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
@@ -28,17 +28,13 @@ public class UserJpaTest {
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName(
-      "given users exist in database when asked should return all users from database")
+  @DisplayName("given users exist in database when asked should return all users from database")
   public void shouldGiveMeUsersWhenAskedGivenUserExistsInDatabase() {
     // Given from @Sql
     // When
     var users = obtainUser.getAllUsers();
     // Then
-    assertThat(users)
-        .isNotNull()
-        .extracting("description")
-        .contains("Twinkle twinkle little star");
+    assertThat(users).isNotNull().extracting("description").contains("Twinkle twinkle little star");
   }
 
   @Test
@@ -52,8 +48,7 @@ public class UserJpaTest {
 
   @Sql(scripts = {"/sql/data.sql"})
   @Test
-  @DisplayName(
-      "given users exists in database when asked for user by id should return the user")
+  @DisplayName("given users exists in database when asked for user by id should return the user")
   public void shouldGiveTheUserWhenAskedByIdGivenThatUserByThatIdExistsInDatabase() {
     // Given from @Sql
     // When

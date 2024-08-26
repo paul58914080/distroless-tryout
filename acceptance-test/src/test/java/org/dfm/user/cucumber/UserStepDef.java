@@ -11,15 +11,15 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.dfm.user.domain.model.User;
+import org.dfm.user.repository.dao.UserDao;
+import org.dfm.user.repository.entity.UserEntity;
+import org.dfm.user.rest.generated.model.ProblemDetail;
+import org.dfm.user.rest.generated.model.UserInfo;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.dfm.user.domain.model.User;
-import org.dfm.user.repository.dao.UserDao;
-import org.dfm.user.repository.entity.UserEntity;
-import org.dfm.user.rest.generated.model.UserInfo;
-import org.dfm.user.rest.generated.model.ProblemDetail;
 
 public class UserStepDef implements En {
 
@@ -108,9 +108,7 @@ public class UserStepDef implements En {
                 .isNotEmpty()
                 .extracting("description")
                 .containsAll(
-                    expectedUsers.stream()
-                        .map(User::getDescription)
-                        .collect(Collectors.toList()));
+                    expectedUsers.stream().map(User::getDescription).collect(Collectors.toList()));
           } else if (body instanceof User) {
             assertThat(body)
                 .isNotNull()
