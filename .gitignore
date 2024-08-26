@@ -3,3 +3,8 @@
 *.iml
 out
 gen
+
+target
+
+build
+.gradle

@@ -1,0 +1,76 @@
+---
+openapi: 3.0.1
+info:
+  title: User API Documentation
+  version: v1
+tags:
+  - name: User
+    description: Resource to manage user
+paths:
+  "/api/v1/users":
+    get:
+      tags:
+        - User
+      summary: Get all users
+      operationId: getUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/UserInfo"
+  "/api/v1/users/{code}":
+    get:
+      tags:
+        - User
+      summary: Get user by code
+      operationId: getUserByCode
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/User"
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int64
+        description:
+          type: string
+    UserInfo:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            "$ref": "#/components/schemas/User"
+    ProblemDetail:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
