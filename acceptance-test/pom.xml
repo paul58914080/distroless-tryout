@@ -13,6 +13,7 @@
     <dependency>
       <groupId>org.dfm.user</groupId>
       <artifactId>bootstrap</artifactId>
+      <scope>provided</scope>
     </dependency>
     <!-- Important: DO NOT DELETE the below dependencies though might seem like redundant to that of
     bootstrap but they are required for jacoco and pitest report aggregation -->
