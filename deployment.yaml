@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distroless-user
+  labels:
+    app: distroless-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distroless-user
+  template:
+    metadata:
+      labels:
+        app: distroless-user
+    spec:
+      containers:
+        - name: distroless-user
+          image: paul58914080/distroless-user:latest
+          ports:
+            - containerPort: 8080
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsUser: 1000
+            runAsGroup: 1000
+          volumeMounts:
+            - name: tmp-volume
+              mountPath: /tmp
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      volumes:
+        - name: tmp-volume
+          emptyDir: {}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: distroless-user
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31000
+  selector:
+    app: distroless-user
