@@ -1,6 +1,6 @@
 # Distroless tryout
 
-This is a sample project to try out distroless images. Here I have tried to create two distroless images for a Java application and an NGINX static website.
+This is a sample project to try out distroless images. Here I have tried to create two distroless images for a [Java application](#java) and an [NGINX static website](#nginx-static).
 
 ## Java
 
