@@ -1,21 +1,34 @@
-# Title
+# Distroless tryout
 
-<!-- 
-this project was generated with https://github.com/devs-from-matrix/basic-template-repository. 
--->
+This is a sample project to try out distroless images. Here I have tried to create two distroless images for a Java application and an NGINX static website.
 
-## [Documentation](https://devs-from-matrix.github.io/basic-template-repository/)
+## Java
 
-## How to build ?
+Building the image
 
-<!-- mention the steps for building this project -->
+```shell
+cd java
+mvn clean install
+docker build -t distroless-java -f .docker/distroless/Dockerfile .
+```
 
-## How to start ?
+Running the container
 
-<!-- mention the steps for starting or serving this project -->
+```shell
+docker run distroless-java -p 8080:8080 --name distroless-java -d
+```
 
-## Contribution guidelines
+## NGINX Static
 
-We are really glad you're reading this, because we need volunteer developers to help this project come to fruition.
+Building the image
 
-Request you to please read our [contribution guidelines](https://devs-from-matrix.github.io/basic-template-repository/#/README?id=contribution-guidelines)
+```shell
+cd nginx-static
+docker build -t distroless-nginx-static -f .docker/distroless/Dockerfile .
+```
+
+Running the container
+
+```shell
+docker run distroless-nginx-static -p 8080:80 --name distroless-nginx-static -d
+```
