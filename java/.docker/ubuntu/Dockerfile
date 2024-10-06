@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/openjdk/jdk:21-ubuntu
 WORKDIR /app
 
 # Copy the project files to the container
-COPY ../../bootstrap/target/bootstrap-exec.jar .
+COPY ../../java/bootstrap/target/bootstrap-exec.jar .
 
 # Expose the application port
 EXPOSE 8080
